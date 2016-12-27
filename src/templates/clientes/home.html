@@ -1,0 +1,8 @@
+<h1>Hola Mundo <small>templates is working</small></h1>
+
+<h2>{{ titulo }} <small></small></h2>
+
+{% for obj in queryset %}
+    <a href="{{ obj.get_absolute_url }}">{{ obj.Nombres }} {{ obj.ApellidoPaterno }} {{ obj.ApellidoMaterno }}</a>
+    {{ obj.FechaNacimiento }}
+{% endfor %}
