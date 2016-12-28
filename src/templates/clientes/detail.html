@@ -2,7 +2,12 @@
 
 <h2>{{ titulo }} <small></small></h2>
 
+
     {{ queryset.Nombres }}
     {{ queryset.ApellidoPaterno }}
     {{ queryset.ApellidoMaterno }}
     {{ queryset.FechaNacimiento }}
+
+<a href="{% url 'clientes:list' %}">Return</a><br>
+
+<a href="{% url 'clientes:update' id=queryset.id %}">Editar</a><br>

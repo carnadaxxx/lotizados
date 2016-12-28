@@ -1,8 +1,10 @@
-<h1>formulario <small></small></h1>
+<h1>{{ titulo }} <small></small></h1>
 
-<form method="post" action="">
+<form method="post">
     {% csrf_token %}
 
     {{ form.as_p }}
     <input type="submit" value="Crear Cliente" />
+    
+    <a href="{% url 'clientes:list' %}">Return</a>
 </form>

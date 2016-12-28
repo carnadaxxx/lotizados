@@ -2,7 +2,13 @@
 
 <h2>{{ titulo }} <small></small></h2>
 
-{% for obj in queryset %}
-    <a href="{{ obj.get_absolute_url }}">{{ obj.Nombres }} {{ obj.ApellidoPaterno }} {{ obj.ApellidoMaterno }}</a>
-    {{ obj.FechaNacimiento }}
-{% endfor %}
+<a href="{% url 'clientes:create' %}">Create</a><br>
+
+
+        {% for obj in queryset %}
+            <a href="{{ obj.get_absolute_url }}">{{ obj.Nombres }}</a>
+            {{ obj.ApellidoPaterno }} {{ obj.ApellidoMaterno }}
+            {{ obj.FechaNacimiento }}<br>
+        {% endfor %}
+
+</table>
