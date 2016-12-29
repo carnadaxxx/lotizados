@@ -1,0 +1,8 @@
+<h2>{{ titulo }} <small></small></h2>
+
+        {% for obj in queryset %}
+            <a href="{{ obj.get_absolute_url }}">{{ obj.Manzana }}{{ obj.Numero }}</a>
+            <hr>
+        {% endfor %}
+
+</table>

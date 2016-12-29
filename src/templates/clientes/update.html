@@ -1,0 +1,11 @@
+<h1>{{ titulo }} <small></small></h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <input type="submit" value="Editar Cliente" />
+
+    <a href="{% url 'clientes:list' %}">ancelar</a>
+</form>

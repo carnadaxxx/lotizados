@@ -4,7 +4,8 @@
     {% csrf_token %}
 
     {{ form.as_p }}
+
     <input type="submit" value="Crear Cliente" />
-    
-    <a href="{% url 'clientes:list' %}">Return</a>
+
+    <a href="{% url 'clientes:list' %}">Cancelar</a>
 </form>

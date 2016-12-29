@@ -1,7 +1,14 @@
 <h1>Hola Mundo <small>templates is working</small></h1>
 
-<h2>{{ titulo }} <small></small></h2>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 
+<h2>{{ titulo }} <small></small></h2>
 
     {{ queryset.Nombres }}
     {{ queryset.ApellidoPaterno }}
@@ -9,5 +16,4 @@
     {{ queryset.FechaNacimiento }}
 
 <a href="{% url 'clientes:list' %}">Return</a><br>
-
 <a href="{% url 'clientes:update' id=queryset.id %}">Editar</a><br>
