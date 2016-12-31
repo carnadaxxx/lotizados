@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
 <h2>{{ titulo }} <small></small></h2>
 
         {% for obj in queryset %}
@@ -5,4 +8,4 @@
             <hr>
         {% endfor %}
 
-</table>
+{% endblock content %}

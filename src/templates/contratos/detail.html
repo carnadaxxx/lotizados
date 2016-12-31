@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ titulo }} <small></small></h2>
+
+    {{ queryset.lote }}
+    {{ queryset.titular }}
+    {{ queryset.creado }}
+
+<a href="{% url 'contratos:list' %}">Return</a><br>
+{% endblock content %}

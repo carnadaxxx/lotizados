@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ titulo }} <small></small></h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <input type="submit" value="Editar Lote" />
+
+    <a href="{% url 'lotes:list' %}">cancelar</a>
+</form>
+{% endblock content %}

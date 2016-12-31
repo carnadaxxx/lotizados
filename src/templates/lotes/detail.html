@@ -1,10 +1,13 @@
+{% extends "base.html" %}
 
-
-<h2>{{ titulo }} <small></small></h2>
+{% block content %}
+    <h2>{{ titulo }} <small></small></h2>
 
     {{ queryset.Manzana }}
     {{ queryset.Numero }}
     {{ queryset.Area }}
     {{ queryset.Costo }}
     <br>
-    <a href="{% url 'lotes:list' %}">Regresar</a>
+    <a href="{% url 'lotes:list' %}">Regresar</a><br>
+    <a href="{% url 'lotes:update' id=queryset.id %}">Editar</a><br>
+{% endblock content %}

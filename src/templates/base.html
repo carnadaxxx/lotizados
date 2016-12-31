@@ -1,0 +1,70 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap-theme.min.css' %}">
+    <link rel="stylesheet" href="{% static '/bootstrap/css/navbar-fixed-top.css' %}">
+    <!-- <link rel="stylesheet" href="{% static '/css/font-awesome.min.css' %}"> -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+      <nav class="navbar navbar-default navbar-fixed-top">
+         <div class="container">
+           <div class="navbar-header">
+             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+             </button>
+             <a class="navbar-brand" href="{% url 'home' %}">LotizaDOS</a>
+           </div>
+           <div id="navbar" class="navbar-collapse collapse">
+             <ul class="nav navbar-nav">
+               <li><a href="{% url 'clientes:list' %}">Clientes</a></li>
+               <li><a href="{% url 'lotes:list' %}">Lotes</a></li>
+               <li><a href="{% url 'contratos:list' %}">Contratos</a></li>
+             </ul>
+             <ul class="nav navbar-nav navbar-right">
+               <li><a href="../navbar/">Default</a></li>
+               <li><a href="../navbar-static-top/">Static top</a></li>
+             </ul>
+           </div><!--/.nav-collapse -->
+         </div>
+       </nav>
+
+      <div class="container">
+        {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% block content %}
+
+        {% endblock content %}
+      </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static '/bootstrap/js/jquery.min.js' %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static '/bootstrap/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

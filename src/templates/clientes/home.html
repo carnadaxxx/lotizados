@@ -1,13 +1,33 @@
+{% extends "base.html" %}
 
+{% block content %}
 <h2>{{ titulo }} <small></small></h2>
 
-<a href="{% url 'clientes:create' %}">Create</a><br>
 
-
-        {% for obj in queryset %}
-            <a href="{{ obj.get_absolute_url }}">{{ obj.Nombres }}</a>
-            {{ obj.ApellidoPaterno }} {{ obj.ApellidoMaterno }}
-            {{ obj.FechaNacimiento }}<br>
-        {% endfor %}
-
-</table>
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Lista de Clientes</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for obj in queryset %}
+                  <tr>
+                    <td><a href="{{ obj.get_absolute_url }}">{{ obj.Nombres }}</a></td>
+                    <td>{{ obj.ApellidoPaterno }} {{ obj.ApellidoMaterno }}</td>
+                    <td>{{ obj.FechaNacimiento }}</td>
+                  </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+           <a class="btn btn-xs btn-primary" href="{% url 'clientes:create' %}">Create</a>
+    </div>
+</div>
+{% endblock content %}
