@@ -11,7 +11,7 @@ class Cliente(models.Model):
     FechaNacimiento = models.DateField(auto_now=False, auto_now_add=False)
 
     def __unicode__(self):
-        return u'%s %s %s' % (self.ApellidoPaterno, self.ApellidoMaterno, self.Nombres)
+        return u'%s %s' % (self.Nombres, self.ApellidoPaterno)
 
     def get_absolute_url(self):
         return reverse("clientes:detail", kwargs={"id": self.id})

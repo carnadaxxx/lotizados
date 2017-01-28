@@ -1,11 +1,54 @@
 {% extends "base.html" %}
 
+{% block head_title%}{{ titulo }}{% endblock head_title %}
+
 {% block content %}
-<h2>{{ titulo }} <small></small></h2>
+<div class="page-header">
+    <h2>{{ titulo }} <small></small></h2>
+</div>
 
-    {{ queryset.lote }}
-    {{ queryset.titular }}
-    {{ queryset.creado }}
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Detalles del Contrato</h3>
+    </div>
+    <div class="panel-body">
+        <p>Lote: {{ queryset.lote }}</p>
+        <p>Titular: {{ queryset.titular }}</p>
+        <p>Fecha de creacion: {{ queryset.creado }}</p>
+        <p>Costo total del Terreno: S/. {{ queryset.costo }}</p>
+        <p>Vendido por: {{ queryset.user }}</p>
+    </div>
+</div>
+<a href="#">Crear Pago</a>
+<br>
+<br>
 
-<a href="{% url 'contratos:list' %}">Return</a><br>
+<div class="panel panel-default">
+<div class="panel-heading">
+  <h3 class="panel-title">Detalles del Pago</h3>
+</div>
+<div class="panel-body">
+    <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Monto</th>
+        <th>Numero de Operacion</th>
+        <th>Pagado</th>
+        <th>Cuenta deposito</th>
+      </tr>
+    </thead>
+    <tbody>
+     {% for obj in pagos %}
+      <tr>
+        <td>{{ obj.monto }}</td>
+        <td>{{ obj.NumeroOperacion }}</td>
+        <td>{{ obj.pagado }}</td>
+        <td>{{ obj.Cuenta }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
+<a href="{% url 'contratos:list' %}">Regresar</a><br>
 {% endblock content %}

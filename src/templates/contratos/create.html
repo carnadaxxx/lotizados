@@ -3,6 +3,7 @@
 {% block head_title%}{{ titulo }}{% endblock head_title %}
 
 {% block content %}
+
 <h1>{{ titulo }} <small></small></h1>
 
 <form method="post">
@@ -10,8 +11,8 @@
 
     {{ form.as_p }}
 
-    <input type="submit" value="Editar Lote" />
+    <input type="submit" value="Crear Contrato" />
 
-    <a href="{% url 'lotes:list' %}">cancelar</a>
+    <a href="{% url 'contratos:list' %}">Cancelar</a>
 </form>
 {% endblock content %}

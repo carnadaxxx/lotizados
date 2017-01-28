@@ -1,16 +1,82 @@
 {% extends "base.html" %}
+{% load humanize %}
+
+{% block head_title%}{{ titulo }}{% endblock head_title %}
 
 {% block content %}
 <div class="page-header">
-    <h1>{{ title }}</h1>
+    <h1>Bienvenido <small>{{ request.user.username }}</small></h1>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+      <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Información General</h3>
+          </div>
+          <div class="panel-body">
+              <p>Numero total de lotes registrados: {{ total }}</p>
+              <hr>
+              <p>Numero total de lotes en contrato: {{ contratos }}</p>
+              <hr>
+              <!-- <p>Total Vendido: S/. {{ decimal_val }} </p> -->
+              <p>Porcentage de lotes vendidos</p>
+              <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-caluemax="100" style="width: {{ porcentage|floatformat:"0" }}%;">
+                      {{ porcentage|floatformat:"0" }}%
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-sm-6">
+      <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Ultimos terrenos vendidos</h3>
+          </div>
+          <div class="panel-body">
+              <table class="table table-striped">
+                  <thead>
+                      <th>Lote</th>
+                      <th>titular</th>
+                      <th>Costo S/.</th>
+                  </thead>
+                  <tbody>
+                      {% for obj in lastsales %}
+                      <tr>
+                          <td>{{ obj.lote }}</td>
+                          <td>{{ obj.titular }}</td>
+                          <td>{{ obj.costo }}</td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+      <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Grafico numero total de ventas por mes</h3>
+          </div>
+          <div class="panel-body">
+            Panel content
+          </div>
+      </div>
+  </div>
+  <div class="col-sm-6">
+      <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Información general sobre gastos</h3>
+          </div>
+          <div class="panel-body">
+            Panel content
+          </div>
+      </div>
+  </div>
 </div>
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Ultimos terrenos vendidos</h3>
-    </div>
-    <div class="panel-body">
-      Panel content
-    </div>
-</div>
+
+
 {% endblock content %}

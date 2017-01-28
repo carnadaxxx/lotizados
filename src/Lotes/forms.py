@@ -9,5 +9,4 @@ class LoteForm(forms.ModelForm):
             "Manzana",
             "Numero",
             "Area",
-            "Costo",
         }

@@ -1,33 +1,40 @@
 {% extends "base.html" %}
 
+{% block head_title%}{{ titulo }}{% endblock head_title %}
+
 {% block content %}
-<h2>{{ titulo }} <small></small></h2>
+<h2 class="sub-header">{{ titulo }}</h2>
+<table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Fecha de nacimiento</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for obj in queryset %}
+          <tr>
+            <td><a href="{{ obj.get_absolute_url }}">{{ obj.Nombres }} {{ obj.ApellidoPaterno }}</a></td>
+            <td>{{ obj.FechaNacimiento }}</td>
+          </tr>
+      {% endfor %}
+    </tbody>
+</table>
 
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Lista de Clientes</h3>
-    </div>
-    <div class="panel-body">
-        <table class="table">
-            <thead>
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-              </tr>
-            </thead>
-            <tbody>
-                {% for obj in queryset %}
-                  <tr>
-                    <td><a href="{{ obj.get_absolute_url }}">{{ obj.Nombres }}</a></td>
-                    <td>{{ obj.ApellidoPaterno }} {{ obj.ApellidoMaterno }}</td>
-                    <td>{{ obj.FechaNacimiento }}</td>
-                  </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-           <a class="btn btn-xs btn-primary" href="{% url 'clientes:create' %}">Create</a>
-    </div>
+<div class="pagination">
+    <span class="step-links">
+    {% if queryset.has_previous %}
+    <a href="?page={{ queryset.previous_page_number }}">previous</a>
+    {% endif %}
+    <span class="current">
+    Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.
+    </span>
+    {% if queryset.has_next %}
+    <a href="?page={{ queryset.next_page_number }}">next</a>
+    {% endif %}
+    </span>
 </div>
+
+<a class="btn btn-xs btn-primary" href="{% url 'clientes:create' %}">Create</a>
+
 {% endblock content %}

@@ -25,7 +25,10 @@ SECRET_KEY = '7j$%)d422bkc!j*9em2f5%+na^gu@b&u8w(_j3_rrf9ikse88c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    u'192.168.1.186',
+    u'127.0.0.1'
+]
 
 
 # Application definition
@@ -37,9 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'Clientes',
     'Lotes',
     'Contratos',
+    'Cuentas',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +132,9 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 # MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+
+#URL Django will redirect the user after a successful authentication.
+LOGIN_REDIRECT_URL = 'home'
+
+#Costo por Metro2
+COSTO_METRO = 223

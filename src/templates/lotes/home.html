@@ -1,11 +1,41 @@
 {% extends "base.html" %}
 
-{% block content %}
-<h2>{{ titulo }} <small></small></h2>
+{% block head_title%}{{ titulo }}{% endblock head_title %}
 
-        {% for obj in queryset %}
-            <a href="{{ obj.get_absolute_url }}">{{ obj.Manzana }}{{ obj.Numero }}</a>
-            <hr>
-        {% endfor %}
+{% block content %}
+<h2 class="sub-header">{{ titulo }}</h2>
+
+<table class="table table-condensed">
+            <thead>
+              <tr>
+                <th>Lote</th>
+                <th>Area</th>
+                <th>Costo</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for obj in queryset %}
+                  <tr>
+                    <td><a href="{{ obj.get_absolute_url }}">{{ obj.Manzana }}{{ obj.Numero }}</a></td>
+                    <td>{{ obj.Area }}</td>
+                    <td>S/. {{ obj.get_costo_metro }}</td>
+                  </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+
+          <div class="pagination">
+              <span class="step-links">
+              {% if queryset.has_previous %}
+              <a href="?page={{ queryset.previous_page_number }}">previous</a>
+              {% endif %}
+              <span class="current">
+              Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.
+              </span>
+              {% if queryset.has_next %}
+              <a href="?page={{ queryset.next_page_number }}">next</a>
+              {% endif %}
+              </span>
+          </div>
 
 {% endblock content %}
