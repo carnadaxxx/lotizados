@@ -5,13 +5,15 @@ from django.views import View
 
 from Contratos.models import Contrato
 from Lotes.models import Manzana, Lote
+from Cuentas.models import Cuenta
 
 def HomePage(request):
     if request.user.is_authenticated():
         totalLotes = Lote.objects.count()
         contratos =  Contrato.objects.count()
-        porcentage = 100 * float(contratos) / float(totalLotes)
-        ultimasVentas = Contrato.objects.order_by('-pk')[:5]
+        cuentas = Cuenta.objects.all()
+        # porcentage = 100 * float(contratos) / float(totalLotes)
+        ultimasVentas = Contrato.objects.order_by('-pk')[:4]
         # suma = Contrato.objects.aggregate(Sum('lote__Costo'))
         # decimal_val = float(suma['lote__Costo__sum'])
         titulo = "HomePage"
@@ -19,8 +21,9 @@ def HomePage(request):
         context = {
             # "decimal_val": decimal_val,
             "total" : totalLotes,
+            "cuentas": cuentas,
             "contratos": contratos,
-            "porcentage": porcentage,
+            # "porcentage": porcentage,
             "lastsales": ultimasVentas,
             "titulo": titulo,
         }

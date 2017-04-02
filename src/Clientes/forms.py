@@ -9,5 +9,4 @@ class ClienteForm(forms.ModelForm):
             "Nombres",
             "ApellidoPaterno",
             "ApellidoMaterno",
-            "FechaNacimiento",
         }

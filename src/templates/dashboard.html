@@ -58,7 +58,7 @@
   <div class="col-sm-6">
       <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Grafico numero total de ventas por mes</h3>
+            <h3 class="panel-title">Estado de las Cuentas</h3>
           </div>
           <div class="panel-body">
             Panel content
@@ -68,10 +68,25 @@
   <div class="col-sm-6">
       <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Información general sobre gastos</h3>
+            <h3 class="panel-title">Información general sobre Cuentas</h3>
           </div>
           <div class="panel-body">
-            Panel content
+              <table class="table table-striped">
+                  <thead>
+                      <th>#</th>
+                      <th>Titular</th>
+                      <th>Total disponible</th>
+                  </thead>
+                  <tbody>
+                      {% for obj in cuentas %}
+                      <tr>
+                          <td>{{ obj.id }}</td>
+                          <td>{{ obj.Titular }}</td>
+                          <td>{{ obj.Monto }}</td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
           </div>
       </div>
   </div>

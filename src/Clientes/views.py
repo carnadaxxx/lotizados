@@ -33,10 +33,13 @@ def clientes_list(request):
 
 def cliente_detail(request, id=None):
     if request.user.is_authenticated():
+        from Contratos.models import Contrato
         queryset = get_object_or_404(Cliente, id=id)
+        queryset2 = Contrato.objects.filter(titular__id=id)
         context = {
             "titulo": "Datos del Cliente",
             "queryset": queryset,
+            "queryset2": queryset2,
         }
         return render(request, "clientes/detail.html", context)
     else:

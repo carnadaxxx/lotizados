@@ -5,7 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 
 from .forms import ContratoForm
-from .models import Contrato, Pago
+from .models import Contrato
 
 # Create your views here.
 def contratos_list(request):
@@ -34,11 +34,10 @@ def contratos_list(request):
 def contratos_detail(request, id=None):
     if request.user.is_authenticated():
         queryset = get_object_or_404(Contrato, id=id)
-        pagos = Pago.objects.filter(Contrato=id)
+
         context = {
             "titulo": "Datos del Contrato",
             "queryset": queryset,
-            "pagos": pagos,
         }
         return render(request, "contratos/detail.html", context)
     else:

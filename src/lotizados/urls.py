@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^cliente/', include('Clientes.urls', namespace='clientes')),
     url(r'^lotes/', include('Lotes.urls', namespace='lotes')),
     url(r'^contratos/', include('Contratos.urls', namespace='contratos')),
+    url(r'^pagos/', include('Pagos.urls', namespace='pagos')),
 ]
 
 if settings.DEBUG:

@@ -41,11 +41,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+
+    'crispy_forms',
+
     'Clientes',
     'Lotes',
     'Contratos',
     'Cuentas',
+    'Pagos',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -137,4 +143,4 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 LOGIN_REDIRECT_URL = 'home'
 
 #Costo por Metro2
-COSTO_METRO = 223
+COSTO_METRO = 222.222222222

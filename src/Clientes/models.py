@@ -8,10 +8,14 @@ class Cliente(models.Model):
     Nombres = models.CharField(max_length=250)
     ApellidoPaterno = models.CharField(max_length=250)
     ApellidoMaterno = models.CharField(max_length=250)
-    FechaNacimiento = models.DateField(auto_now=False, auto_now_add=False)
 
     def __unicode__(self):
         return u'%s %s' % (self.Nombres, self.ApellidoPaterno)
+
+    def get_contratos(self):
+        from Contratos.models import Contrato
+        for e in Contrato.objects.filter(titular__id=self.id):
+            return e.lote
 
     def get_absolute_url(self):
         return reverse("clientes:detail", kwargs={"id": self.id})

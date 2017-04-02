@@ -17,11 +17,9 @@
         <p>Fecha de creacion: {{ queryset.creado }}</p>
         <p>Costo total del Terreno: S/. {{ queryset.costo }}</p>
         <p>Vendido por: {{ queryset.user }}</p>
+        <p>Numero de Cuotas: {{ queryset.cuotas }}</p>
     </div>
 </div>
-<a href="#">Crear Pago</a>
-<br>
-<br>
 
 <div class="panel panel-default">
 <div class="panel-heading">
@@ -31,21 +29,21 @@
     <table class="table table-condensed">
     <thead>
       <tr>
-        <th>Monto</th>
         <th>Numero de Operacion</th>
+        <th>Monto</th>
         <th>Pagado</th>
         <th>Cuenta deposito</th>
       </tr>
     </thead>
     <tbody>
-     {% for obj in pagos %}
+     <!-- {% for obj in pagos %}
       <tr>
+        <td><a href="#">{{ obj.NumeroOperacion }}</a></td>
         <td>{{ obj.monto }}</td>
-        <td>{{ obj.NumeroOperacion }}</td>
         <td>{{ obj.pagado }}</td>
         <td>{{ obj.Cuenta }}</td>
       </tr>
-      {% endfor %}
+      {% endfor %} -->
     </tbody>
   </table>
 </div>

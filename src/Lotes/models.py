@@ -1,4 +1,6 @@
 from __future__ import unicode_literals
+
+import math
 from django.db import models
 from django.conf import settings
 from django.core.urlresolvers import reverse
@@ -36,4 +38,4 @@ class Lote(models.Model):
 
     def get_costo_metro(self):
         q = settings.COSTO_METRO * float(self.Area)
-        return q
+        return round(q)

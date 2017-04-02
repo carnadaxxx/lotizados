@@ -5,11 +5,26 @@
 {% block content %}
 <h2>{{ titulo }} <small></small></h2>
 
-    {{ queryset.Nombres }}
-    {{ queryset.ApellidoPaterno }}
-    {{ queryset.ApellidoMaterno }}
-    {{ queryset.FechaNacimiento }}
+<div class="panel panel-default">
+  <div class="panel-heading">Información del CLiente</div>
+  <div class="panel-body">
+      {{ queryset.Nombres }}
+      {{ queryset.ApellidoPaterno }}
+      {{ queryset.ApellidoMaterno }}
+  </div>
+</div>
 
-<a href="{% url 'clientes:list' %}">Return</a><br>
-<a href="{% url 'clientes:update' id=queryset.id %}">Editar</a><br>
+<ul class="list-group">
+{% for e in queryset2 %}
+    <li  class="list-group-item"><a href="../../../contratos/detail/{{e.id}}">{{ e.lote }}</a></li>
+    {% empty %}
+    <li class="list-group-item">No tiene lotes en proceso de compra</li>
+{% endfor %}
+</ul>
+
+<div class="btn-group" role="group" aria-label="...">
+    <a type="button" class="btn btn-default" href="{% url 'clientes:list' %}">Return</a>
+    <a type="button" class="btn btn-default" href="{% url 'clientes:update' id=queryset.id %}">Editar</a>
+</div>
+
 {% endblock content %}
